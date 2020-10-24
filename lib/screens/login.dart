@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:perdidosachados/constants.dart';
-import 'home.dart';
+import 'package:perdidosachados/screens/Home.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -33,12 +33,12 @@ class _LoginState extends State<Login> {
     }
   } */
 
-  Widget _buildEmailTF() {
+  Widget _buildfoneTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Email',
+          'Nº de Telefone',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -49,7 +49,7 @@ class _LoginState extends State<Login> {
           child: TextFormField(
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
-              color: Colors.green,
+              color: Colors.blueGrey[600],
               fontSize: 18.5,
               fontFamily: 'OpenSans',
             ),
@@ -57,10 +57,10 @@ class _LoginState extends State<Login> {
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.email,
-                color: Colors.green,
+                Icons.phone_android,
+                color: Colors.blueGrey[600],
               ),
-              hintText: 'Digite o Email',
+              hintText: 'Digite o nº de telefone',
               hintStyle: kHintTextStyle,
             ),
             validator: (value) {
@@ -91,7 +91,7 @@ class _LoginState extends State<Login> {
           child: TextFormField(
             obscureText: true,
             style: TextStyle(
-              color: Colors.green,
+              color: Colors.blueGrey[600],
               fontSize: 18.5,
               fontFamily: 'OpenSans',
             ),
@@ -100,7 +100,7 @@ class _LoginState extends State<Login> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock,
-                color: Colors.green,
+                color: Colors.blueGrey[600],
               ),
               hintText: 'Digite a Senha',
               hintStyle: kHintTextStyle,
@@ -140,7 +140,7 @@ class _LoginState extends State<Login> {
             data: ThemeData(unselectedWidgetColor: Colors.white),
             child: Checkbox(
               value: _rememberMe,
-              checkColor: Colors.green,
+              checkColor: Colors.blueGrey[600],
               activeColor: Colors.white,
               onChanged: (value) {
                 setState(() {
@@ -170,9 +170,9 @@ class _LoginState extends State<Login> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: Colors.white60,
+        color: Colors.green,
         child: Text(
-          'ENTRAR',
+          'Entrar',
           style: TextStyle(
             color: Colors.white,
             letterSpacing: 1.5,
@@ -224,15 +224,15 @@ class _LoginState extends State<Login> {
           iconSize: 30.0,
           color: Colors.white,
           onPressed: () {
-            /* Navigator.push(context, MaterialPageRoute(builder: (_) => Home())); */
+            Navigator.push(context, MaterialPageRoute(builder: (_) => Home()));
           },
         ),
         title: Text(
-          'Login',
+          'Entrar',
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'OpenSans',
-            fontSize: 25.0,
+            fontSize: 20.0,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -246,7 +246,7 @@ class _LoginState extends State<Login> {
               Container(
                 height: double.infinity,
                 width: double.infinity,
-                decoration: BoxDecoration(color: Colors.green),
+                decoration: BoxDecoration(color: Colors.blueGrey[600]),
               ),
               Container(
                 height: double.infinity,
@@ -263,7 +263,7 @@ class _LoginState extends State<Login> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         SizedBox(height: 30.0),
-                        _buildEmailTF(),
+                        _buildfoneTF(),
                         SizedBox(
                           height: 30.0,
                         ),

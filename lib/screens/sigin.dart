@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:perdidosachados/constants.dart';
-import 'home.dart';
 
 class Sigin extends StatefulWidget {
   @override
@@ -19,7 +18,7 @@ class _SiginState extends State<Sigin> {
   int _status = 0;
 
 
-  final List<String> linguas = ['Kicongo', 'Umbundo', 'Tchocue', 'Kimbundo'];
+  final List<String> linguas = ['Luanda', 'Malanje', 'Úige', 'Cabinda'];
   int radioGrupo = 1;
 
 
@@ -56,7 +55,7 @@ class _SiginState extends State<Sigin> {
           child: TextFormField(
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
-              color: Colors.green,
+              color: Colors.blueGrey[600],
               fontSize: 18.5,
               fontFamily: 'OpenSans',
             ),
@@ -65,7 +64,7 @@ class _SiginState extends State<Sigin> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.person,
-                color: Colors.green,
+                color: Colors.blueGrey[600],
               ),
               hintText: 'Digite o Nome',
               hintStyle: kHintTextStyle,
@@ -100,7 +99,7 @@ class _SiginState extends State<Sigin> {
           child: TextFormField(
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
-              color: Colors.green,
+              color: Colors.blueGrey[600],
               fontSize: 18.5,
               fontFamily: 'OpenSans',
             ),
@@ -109,7 +108,7 @@ class _SiginState extends State<Sigin> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.email,
-                color: Colors.green,
+                color: Colors.blueGrey[600],
               ),
               hintText: 'Digite o Email',
               hintStyle: kHintTextStyle,
@@ -144,7 +143,7 @@ class _SiginState extends State<Sigin> {
           child: TextFormField(
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
-              color: Colors.green,
+              color: Colors.blueGrey[600],
               fontSize: 18.5,
               fontFamily: 'OpenSans',
             ),
@@ -153,7 +152,7 @@ class _SiginState extends State<Sigin> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.phone_iphone,
-                color: Colors.green,
+                color: Colors.blueGrey[600],
               ),
               hintText: 'Digite o nº de telefone',
               hintStyle: kHintTextStyle,
@@ -193,7 +192,7 @@ class _SiginState extends State<Sigin> {
               );
             }).toList(),
             style: TextStyle(
-              color: Colors.green,
+              color: Colors.blueGrey[600],
               fontSize: 18.5,
               fontFamily: 'OpenSans',
               fontWeight: FontWeight.bold,
@@ -206,7 +205,7 @@ class _SiginState extends State<Sigin> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.person_pin_circle,
-                color: Colors.green,
+                color: Colors.blueGrey[600],
               ),
               hintText: 'Escolha a Lingua que falas',
               hintStyle: kHintTextStyle,
@@ -241,7 +240,7 @@ class _SiginState extends State<Sigin> {
           child: TextFormField(
             obscureText: true,
             style: TextStyle(
-              color: Colors.green,
+              color: Colors.blueGrey[600],
               fontSize: 18.5,
               fontFamily: 'OpenSans',
             ),
@@ -250,7 +249,7 @@ class _SiginState extends State<Sigin> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock,
-                color: Colors.green,
+                color: Colors.blueGrey[600],
               ),
               hintText: 'Digite a Senha',
               hintStyle: kHintTextStyle,
@@ -283,7 +282,7 @@ class _SiginState extends State<Sigin> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: Colors.white10,
+        color: Colors.green,
         child: Text(
           'REGISTAR-ME',
           style: TextStyle(
@@ -345,7 +344,7 @@ class _SiginState extends State<Sigin> {
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'OpenSans',
-            fontSize: 22.0,
+            fontSize: 20.0,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -359,7 +358,7 @@ class _SiginState extends State<Sigin> {
               Container(
                 height: double.infinity,
                 width: double.infinity,
-                decoration: BoxDecoration(color: Colors.green),
+                decoration: BoxDecoration(color: Colors.blueGrey[600]),
               ),
               Container(
                 height: double.infinity,

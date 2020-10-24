@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:perdidosachados/constants.dart';
+import 'package:perdidosachados/screens/login.dart';
+import 'package:perdidosachados/screens/sigin.dart';
 
 class Home extends StatelessWidget {
 
@@ -32,7 +34,7 @@ class Home extends StatelessWidget {
               accountEmail: Text('suport@denden.co.ao'),
               currentAccountPicture: GestureDetector(
                 child: new CircleAvatar(
-                  backgroundColor: Colors.blueGrey,
+                  backgroundColor: Colors.blueGrey[600],
                   backgroundImage: AssetImage("assets/imagen/pp.png"),
                 ),
               ),
@@ -50,7 +52,7 @@ class Home extends StatelessWidget {
                 ),
                 leading: Icon(
                   Icons.home,
-                  color: Colors.blueGrey,
+                  color: Colors.blueGrey[600],
                 ),
               ),
             ),
@@ -71,7 +73,7 @@ class Home extends StatelessWidget {
                 ),
                 leading: Icon(
                   Icons.book,
-                  color: Colors.blueGrey,
+                  color: Colors.blueGrey[600],
                 ),
               ),
             ),
@@ -92,7 +94,7 @@ class Home extends StatelessWidget {
                 ),
                 leading: Icon(
                   Icons.add,
-                  color: Colors.blueGrey,
+                  color: Colors.blueGrey[600],
                 ),
               ),
             ),
@@ -111,11 +113,11 @@ class Home extends StatelessWidget {
               ),
             ), */
             InkWell(
-              onTap: () {/* Navigator.push(
+              onTap: () {Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (_) => Login()
-                        )); */},
+                        ));},
               child: ListTile(
                 title: Text(
                   'Entrar',
@@ -127,11 +129,11 @@ class Home extends StatelessWidget {
                 ),
                 leading: Icon(
                   Icons.person,
-                  color: Colors.blueGrey,
+                  color: Colors.blueGrey[600],
                 ),
               ),
             ),
-            /* InkWell(
+            InkWell(
               onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => Sigin()));},
               child: ListTile(
                 title: Text(
@@ -144,10 +146,10 @@ class Home extends StatelessWidget {
                 ),
                 leading: Icon(
                   Icons.person_add,
-                  color: Colors.blueGrey,
+                  color: Colors.blueGrey[600],
                 ),
               ),
-            ), */
+            ),
             InkWell(
               onTap: () {/* Navigator.push(
                     context,
@@ -157,11 +159,11 @@ class Home extends StatelessWidget {
               child: ListTile(
                 title: Text('Fazer Doação',
                     style: TextStyle(
-                      color: Colors.blueGrey,
+                      color: Colors.blueGrey[600],
                     )),
                 leading: Icon(
                   Icons.attach_money,
-                  color: Colors.blueGrey,
+                  color: Colors.blueGrey[600],
                 ),
               ),
             ),
@@ -215,7 +217,7 @@ class Home extends StatelessWidget {
           Container(
             height: size.height * .40,
             decoration: BoxDecoration(
-              color: Colors.blueGrey,
+              color: Colors.blueGrey[600],
             ),
           ),
           SafeArea(
@@ -231,7 +233,7 @@ class Home extends StatelessWidget {
                       height: 52,
                       width: 52,
                       decoration: BoxDecoration(
-                        color: Colors.blueGrey,
+                        color: Colors.blueGrey[600],
                         shape: BoxShape.rectangle,
                       ),
                     ),
@@ -247,7 +249,7 @@ class Home extends StatelessWidget {
                     margin: EdgeInsets.symmetric(vertical: 5),
                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
                     decoration: BoxDecoration(
-                      color: Colors.blueGrey,
+                      color: Colors.blueGrey[600],
                       borderRadius: BorderRadius.circular(29.5),
                     ),
                   ),
@@ -306,7 +308,7 @@ class Home extends StatelessWidget {
                 child: Text(
                   'ajude-nos fazendo uma doação, click Aqui! Obrigado...',
                   style: TextStyle(
-                    color: Colors.blueGrey,
+                    color: Colors.blueGrey[600],
                     letterSpacing: 1.0,
                     fontSize: 13.5,
                     fontWeight: FontWeight.normal,
