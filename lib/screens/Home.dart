@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:perdidosachados/constants.dart';
+import 'package:perdidosachados/screens/Listar.dart';
 import 'package:perdidosachados/screens/login.dart';
 import 'package:perdidosachados/screens/sigin.dart';
 
@@ -360,11 +361,11 @@ class CategoryCard extends StatelessWidget {
           child: InkWell(
             onTap: () {
               if (tela == 1) {
-               /*  Navigator.push(
+                Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) => Dicionario(redirect: 1,)
-                        )); */
+                        builder: (_) => Listar()
+                        ));
               } else if (tela == 2) {
                /*  Navigator.push(
                     context,
