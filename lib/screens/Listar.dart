@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:perdidosachados/screens/Detalhe.dart';
 import 'package:perdidosachados/shared/ListItem.dart';
 import 'package:perdidosachados/widgets/listWidget.dart';
 
@@ -9,19 +10,31 @@ class Listar extends StatefulWidget {
 }
 
 class _ListarState extends State<Listar> with SingleTickerProviderStateMixin {
-
   //Lista dos Itens
   List<ListItem> _listItem = [
-    ListItem("Estima", "10-10-2020", "Sapatos de Camussa", "assets/imagen/pessoas.png"),
-    ListItem("Epalanga", "10-20-2020", "Tqqqqqqqqqwwsssssssssssseeeeeeee cccccccccccccccc cccccccccc cccccccccccc elefone Sansung Note 4", "assets/imagen/pessoas.png"),
-    ListItem("Candombua", "12-02-2020", "Sapatos de qqqqq", "assets/imagen/pessoas.png"),
-    ListItem("_ListarState", "10-10-2020", "Sapatos de Camussa", "assets/imagen/pessoas.png"),
-    ListItem("State", "10-10-2020", "Sapatos de Camussa", "assets/imagen/pessoas.png"),
-    ListItem("List", "10-10-2020", "Sapatos de Camussa", "assets/imagen/pessoas.png"),
-    ListItem("Perdidos", "10-10-2020", "Sapatos de Camussa", "assets/imagen/pessoas.png"),
-    ListItem("Todos", "10-10-2020", "Sapatos de Camussa", "assets/imagen/pessoas.png"),
-    ListItem("extends", "10-10-2020", "Sapatos de Camussa", "assets/imagen/pessoas.png"),
-    ListItem("Estima", "10-10-2020", "Sapatos de Camussa", "assets/imagen/pessoas.png"),
+    ListItem("Estima", "10-10-2020", "Sapatos de Camussa",
+        "assets/imagen/1.jpg"),
+    ListItem(
+        "Epalanga",
+        "10-20-2020",
+        "Tqqqqqqqqqwwsssssssssssseeeeeeee cccccccccccccccc cccccccccc cccccccccccc elefone Sansung Note 4",
+        "assets/imagen/2.jpg"),
+    ListItem("Candombua", "12-02-2020", "Sapatos de qqqqq",
+        "assets/imagen/fest.png"),
+    ListItem("_ListarState", "10-10-2020", "Sapatos de Camussa",
+        "assets/imagen/3.jpg"),
+    ListItem("State", "10-10-2020", "Sapatos de Camussa",
+        "assets/imagen/6.png"),
+    ListItem("List", "10-10-2020", "Sapatos de Camussa",
+        "assets/imagen/pessoas.png"),
+    ListItem("Perdidos", "10-10-2020", "Sapatos de Camussa",
+        "assets/imagen/fest.png"),
+    ListItem("Todos", "10-10-2020", "Sapatos de Camussa",
+        "assets/imagen/pessoas.png"),
+    ListItem("extends", "10-10-2020", "Sapatos de Camussa",
+        "assets/imagen/pessoas.png"),
+    ListItem("Estima", "10-10-2020", "Sapatos de Camussa",
+        "assets/imagen/pessoas.png"),
   ];
 
   List<Tab> _listTab = [
@@ -80,26 +93,31 @@ class _ListarState extends State<Listar> with SingleTickerProviderStateMixin {
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
+          /* Totos Itens */
           Padding(
             padding: EdgeInsets.all(8.0),
             child: Container(
               child: ListView.builder(
                 itemCount: _listItem.length,
-                itemBuilder: (context, index){
+                itemBuilder: (context, index) {
                   return InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Detalhe(item: _listItem[index], tag: _listItem[index].title)));
+                    },
                     child: ListWidget(_listItem[index]),
                   );
                 },
               ),
             ),
           ),
+          /* Only Perdidos */
           Padding(
             padding: EdgeInsets.all(8.0),
             child: Container(
               color: Colors.pink,
             ),
           ),
+          /* Only Achados */
           Padding(
             padding: EdgeInsets.all(8.0),
             child: Container(

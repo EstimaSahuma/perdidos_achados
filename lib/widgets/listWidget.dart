@@ -12,8 +12,8 @@ Widget ListWidget(ListItem item) {
       child: Row(
         children: <Widget>[
           Container(
-            width: 120.0,
-            height: 120.0,
+            width: 150.0,
+            height: 150.0,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(item.urlAvatar),
