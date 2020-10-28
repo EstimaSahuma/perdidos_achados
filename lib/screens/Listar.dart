@@ -12,8 +12,8 @@ class Listar extends StatefulWidget {
 class _ListarState extends State<Listar> with SingleTickerProviderStateMixin {
   //Lista dos Itens
   List<ListItem> _listItem = [
-    ListItem("Estima", "10-10-2020", "Sapatos de Camussa",
-        "assets/imagen/1.jpg"),
+    ListItem(
+        "Estima", "10-10-2020", "Sapatos de Camussa", "assets/imagen/1.jpg"),
     ListItem(
         "Epalanga",
         "10-20-2020",
@@ -23,8 +23,8 @@ class _ListarState extends State<Listar> with SingleTickerProviderStateMixin {
         "assets/imagen/fest.png"),
     ListItem("_ListarState", "10-10-2020", "Sapatos de Camussa",
         "assets/imagen/3.jpg"),
-    ListItem("State", "10-10-2020", "Sapatos de Camussa",
-        "assets/imagen/6.png"),
+    ListItem(
+        "State", "10-10-2020", "Sapatos de Camussa", "assets/imagen/6.png"),
     ListItem("List", "10-10-2020", "Sapatos de Camussa",
         "assets/imagen/pessoas.png"),
     ListItem("Perdidos", "10-10-2020", "Sapatos de Camussa",
@@ -75,7 +75,10 @@ class _ListarState extends State<Listar> with SingleTickerProviderStateMixin {
               Icons.arrow_back,
               color: Colors.white,
             ),
-            onPressed: null),
+            onPressed: () {
+              Navigator.pop(context);
+            }
+          ),
         centerTitle: true,
         title: Text(
           "XXXX Perdidas",
@@ -102,7 +105,12 @@ class _ListarState extends State<Listar> with SingleTickerProviderStateMixin {
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Detalhe(item: _listItem[index], tag: _listItem[index].title)));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Detalhe(
+                                  item: _listItem[index],
+                                  tag: _listItem[index].title)));
                     },
                     child: ListWidget(_listItem[index]),
                   );

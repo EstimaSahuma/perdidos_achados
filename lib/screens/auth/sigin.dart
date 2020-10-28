@@ -336,8 +336,8 @@ class _SiginState extends State<Sigin> {
           iconSize: 30.0,
           color: Colors.white,
           onPressed: () {
-            /* Navigator.push(context, MaterialPageRoute(builder: (_) => Home())); */
-          },
+              Navigator.pop(context);
+            },
         ),
         title: Text(
           'Registar-me',

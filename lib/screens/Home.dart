@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:perdidosachados/constants.dart';
 import 'package:perdidosachados/screens/Listar.dart';
-import 'package:perdidosachados/screens/login.dart';
-import 'package:perdidosachados/screens/sigin.dart';
+import 'package:perdidosachados/screens/other/acerca.dart';
+import 'package:perdidosachados/screens/other/doacao.dart';
+import 'package:perdidosachados/screens/other/quem_somos.dart';
 
 class Home extends StatelessWidget {
 
@@ -25,7 +26,7 @@ class Home extends StatelessWidget {
           children: <Widget>[
             new UserAccountsDrawerHeader(
               accountName: Text(
-                'dendên developer',
+                'perdidos&achados',
                 style: TextStyle(
                   fontFamily: 'OpenSans',
                   fontSize: 13.0,
@@ -61,32 +62,11 @@ class Home extends StatelessWidget {
               onTap: () {/* Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) => DicionarioLingua(redirect: 1,)
-                        )); */},
-              child: ListTile(
-                title: Text(
-                  'Dicíonario',
-                  style: TextStyle(
-                    fontFamily: 'OpenSans',
-                    fontSize: 13.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                leading: Icon(
-                  Icons.book,
-                  color: Colors.blueGrey[600],
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {/* Navigator.push(
-                    context,
-                    MaterialPageRoute(
                         builder: (_) => Add(redirect: 1,)
                         )); */},
               child: ListTile(
                 title: Text(
-                  'Registar Palavras',
+                  'Declarar',
                   style: TextStyle(
                     fontFamily: 'OpenSans',
                     fontSize: 13.0,
@@ -99,21 +79,28 @@ class Home extends StatelessWidget {
                 ),
               ),
             ),
-            /* InkWell(
-              onTap: (){},
+            InkWell(
+              onTap: () {/* Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => DicionarioLingua(redirect: 1,)
+                        )); */},
               child: ListTile(
-                title: Text('Tradução (Real-Time'),
-                leading: Icon(Icons.home),
+                title: Text(
+                  'Meus',
+                  style: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontSize: 13.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                leading: Icon(
+                  Icons.book,
+                  color: Colors.blueGrey[600],
+                ),
               ),
             ),
-            InkWell(
-              onTap: (){},
-              child: ListTile(
-                title: Text('Ensino de Linguas'),
-                leading: Icon(Icons.home),
-              ),
-            ), */
-            InkWell(
+            /* InkWell(
               onTap: () {Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -150,30 +137,30 @@ class Home extends StatelessWidget {
                   color: Colors.blueGrey[600],
                 ),
               ),
-            ),
+            ), */
             InkWell(
-              onTap: () {/* Navigator.push(
+              onTap: () {Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (_) => Doacao(redirect: 1,)
-                        )); */},
+                        ));},
               child: ListTile(
                 title: Text('Fazer Doação',
                     style: TextStyle(
-                      color: Colors.blueGrey[600],
+                      color: Colors.green[600],
                     )),
                 leading: Icon(
                   Icons.attach_money,
-                  color: Colors.blueGrey[600],
+                  color: Colors.green[600],
                 ),
               ),
             ),
             InkWell(
-              onTap: () {/* Navigator.push(
+              onTap: () {Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) => QuemSomos(redirect: 1,)
-                        )); */},
+                        builder: (_) => QuemSomos()
+                        ));},
               child: ListTile(
                 title: Text(
                   'Quem Somos',
@@ -190,11 +177,11 @@ class Home extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () {/* Navigator.push(
+              onTap: () {Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) => Acerca(redirect: 1,)
-                        )); */},
+                        builder: (_) => Acerca()
+                        ));},
               child: ListTile(
                 title: Text(
                   'Acerca',
@@ -207,6 +194,28 @@ class Home extends StatelessWidget {
                 leading: Icon(
                   Icons.help,
                   color: Colors.blue,
+                ),
+              ),
+            ),
+            InkWell(
+              onTap: () {/* Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => Add(redirect: 1,)
+                        )); */},
+              child: ListTile(
+                title: Text(
+                  'Sair',
+                  style: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontSize: 13.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                  ),
+                ),
+                leading: Icon(
+                  Icons.logout,
+                  color: Colors.grey,
                 ),
               ),
             ),
