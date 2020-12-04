@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:perdidosachados/screens/Declarar_1.dart';
 import 'package:perdidosachados/screens/Detalhe.dart';
 import 'package:perdidosachados/shared/ListItem.dart';
 import 'package:perdidosachados/widgets/listWidget.dart';
@@ -133,6 +134,22 @@ class _ListarState extends State<Listar> with SingleTickerProviderStateMixin {
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (_) => DeclararForm_1(
+                      )));
+        },
+        tooltip: 'Increment',
+        backgroundColor: Colors.blueGrey[600],
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 32.0,
+        ),
       ),
     );
   }
