@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:perdidosachados/screens/item/PessoaForm.dart';
+import 'package:perdidosachados/screens/other/acerca.dart';
 
 class DeclararForm_1 extends StatefulWidget {
   @override
@@ -40,6 +42,7 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
               children: <Widget>[
                 Radio(
                     value: 1,
+                        activeColor: Colors.orange,
                     groupValue: valueGroupEstado,
                     onChanged: (value) {
                       setState(() {
@@ -60,6 +63,7 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
                   children: <Widget>[
                     Radio(
                         value: 2,
+                        activeColor: Colors.orange,
                         groupValue: valueGroupEstado,
                         onChanged: (value) {
                           setState(() {
@@ -78,7 +82,9 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
               ],
             ),
             /* ---------------------------------------------------------------- */
-            Divider(color: Colors.blueGrey[600],),
+            Divider(
+              color: Colors.blueGrey[600],
+            ),
             /* ------------------------------------------------------------ */
             SizedBox(
               height: 10.0,
@@ -98,6 +104,7 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
               children: <Widget>[
                 Radio(
                     value: 1,
+                        activeColor: Colors.orange,
                     groupValue: valueGroupTipo,
                     onChanged: (value) {
                       setState(() {
@@ -121,6 +128,7 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
               children: <Widget>[
                 Radio(
                     value: 2,
+                        activeColor: Colors.orange,
                     groupValue: valueGroupTipo,
                     onChanged: (value) {
                       setState(() {
@@ -141,6 +149,7 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
               children: <Widget>[
                 Radio(
                     value: 3,
+                        activeColor: Colors.orange,
                     groupValue: valueGroupTipo,
                     onChanged: (value) {
                       setState(() {
@@ -157,13 +166,15 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
               ],
             ),
             /* ------------------------------------------------------------- */
-            Divider( color: Colors.blueGrey[600],),
+            Divider(
+              color: Colors.blueGrey[600],
+            ),
             /* ---------------------------------------------------------------- */
             SizedBox(
               height: 10.0,
             ),
             Text(
-              "Tem Recompensa",
+              "Tem Recompensa ?",
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 20.0,
@@ -177,6 +188,7 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
               children: <Widget>[
                 Radio(
                     value: 1,
+                        activeColor: Colors.orange,
                     groupValue: valueGroupRecompensa,
                     onChanged: (value) {
                       setState(() {
@@ -197,6 +209,7 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
                   children: <Widget>[
                     Radio(
                         value: 2,
+                        activeColor: Colors.orange,
                         groupValue: valueGroupRecompensa,
                         onChanged: (value) {
                           setState(() {
@@ -215,7 +228,9 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
               ],
             ),
             /* ---------------------------------------------------------------- */
-            Divider( color: Colors.blueGrey[600],),
+            Divider(
+              color: Colors.blueGrey[600],
+            ),
             /* ---------------------------------------------------------------- */
             SizedBox(
               height: 10.0,
@@ -235,6 +250,7 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
               children: <Widget>[
                 Radio(
                     value: 1,
+                        activeColor: Colors.orange,
                     groupValue: valueGroupContacto,
                     onChanged: (value) {
                       setState(() {
@@ -255,6 +271,7 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
                   children: <Widget>[
                     Radio(
                         value: 2,
+                        activeColor: Colors.orange,
                         groupValue: valueGroupContacto,
                         onChanged: (value) {
                           setState(() {
@@ -273,7 +290,34 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
               ],
             ),
             /* ---------------------------------------------------------------- */
-            SizedBox(height: 30.0,),
+            SizedBox(
+              height: 30.0,
+            ),
+            Center(
+              child: RaisedButton(
+                elevation: 5.0,
+                onPressed: /* validateAndSave, */
+                    () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => PessoaForm()));
+                },
+                padding: EdgeInsets.symmetric(horizontal: 120.0, vertical: 15.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                color: Colors.green[600],
+                child: Text(
+                  'Continuar...',
+                  style: TextStyle(
+                    color: Colors.white,
+                    letterSpacing: 1.5,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'OpenSans',
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),

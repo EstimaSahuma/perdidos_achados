@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:perdidosachados/screens/Declarar_1.dart';
+import 'package:perdidosachados/screens/item/Declarar_1.dart';
 import 'package:perdidosachados/screens/Detalhe.dart';
 import 'package:perdidosachados/shared/ListItem.dart';
 import 'package:perdidosachados/widgets/listWidget.dart';
