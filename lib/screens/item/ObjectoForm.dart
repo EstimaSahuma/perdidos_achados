@@ -4,53 +4,53 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:perdidosachados/constants.dart';
 
-class PessoaForm extends StatefulWidget {
+class ObjectoForm extends StatefulWidget {
   @override
-  _PessoaFormState createState() => _PessoaFormState();
+  _ObjectoFormState createState() => _ObjectoFormState();
 }
 
-class _PessoaFormState extends State<PessoaForm> {
+class _ObjectoFormState extends State<ObjectoForm> {
   PickedFile _imageFile;
   final ImagePicker _picker = ImagePicker();
 
-  String _estado, _tipo, _descricao, _nome, _faixa, _genero, _saude = "";
-  List<String> saudes = ["NORMAL", "DEFICIENTE", "DOENTE MENTAL"];
-  List<String> faixas = ["CRIANÇA", "ADOLESCENTE", "JOVEM", "ADULTO", "IDOSO"];
+  String _marca, _tipo = "";
+  List<String> marcas = ["RAFEIRO", "PITT-BULL", "PASTOR ALEMÃO"];
+  List<String> tipos = ["CARRO", "CARTEIRA DE BOLSO", "MOCHILA", "TELEFONE", "CADERNO", "ANÉL", "MOCHILA", "COMPUTADOR", "BILHETE DE IDENTIDADE", "CARTA DE CONDUÇÃO", "OUTROS..."];
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
-  void faixa(String value) {
+
+
+  _ObjectoFormState();
+
+  void tipo(String value) {
     setState(() {
-      _faixa = value;
+      _tipo = value;
     });
   }
 
-  void genero(String value) {
+  void marca(String value) {
     setState(() {
-      _genero = value;
+      _marca = value;
     });
   }
 
-  void saude(String value) {
-    setState(() {
-      _saude = value;
-    });
-  }
-
-  Widget _buildNome() {
-    return TextFormField(
-      decoration: const InputDecoration(
-        icon: Icon(Icons.person),
-        hintText: 'Nome da Pessoa ?',
-        labelText: 'Nome *',
+  Widget _buildDescricao() {
+    return Card(
+      color: Colors.white,
+      child: TextFormField(
+        maxLines: 10,
+        decoration: InputDecoration.collapsed(
+          hintText: "escreva aqui \"coisas uteís\" sobre o objecto, a sua cor se esta passado em nome de quem...",
+        ),
+        onSaved: (String value) {
+          // This optional block of code can be used to run
+          // code when the user saves the form.
+        },
+        validator: (String value) {
+          return value.contains('@') ? 'Do not use the @ char.' : null;
+        },
       ),
-      onSaved: (String value) {
-        // This optional block of code can be used to run
-        // code when the user saves the form.
-      },
-      validator: (String value) {
-        return value.contains('@') ? 'Do not use the @ char.' : null;
-      },
     );
   }
 
@@ -101,7 +101,7 @@ class _PessoaFormState extends State<PessoaForm> {
         CircleAvatar(
           radius: 80.0,
           backgroundImage: _imageFile == null
-              ? AssetImage("assets/imagen/default_person.png")
+              ? AssetImage("assets/imagen/objectos.png")
               : FileImage(File(_imageFile.path)),
         ),
         Positioned(
@@ -123,31 +123,12 @@ class _PessoaFormState extends State<PessoaForm> {
     );
   }
 
-  Widget _buildDescricao() {
-    return Card(
-      color: Colors.white,
-      child: TextFormField(
-        maxLines: 5,
-        decoration: InputDecoration.collapsed(
-          hintText: "escreva aqui a descrição do animal Ex: a core, o tamanho e/ou caracteristicas do animal...",
-        ),
-        onSaved: (String value) {
-          // This optional block of code can be used to run
-          // code when the user saves the form.
-        },
-        validator: (String value) {
-          return value.contains('@') ? 'Do not use the @ char.' : null;
-        },
-      ),
-    );
-  }
-
-  Widget _buildFaixa() {
+  Widget _buildTipo() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Faixetaria :',
+          'Tipo de Objecto :',
           style: TextStyle(
             color: Colors.green,
             fontSize: 12.0,
@@ -159,10 +140,10 @@ class _PessoaFormState extends State<PessoaForm> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: DropdownButtonFormField(
-            items: faixas.map((lingua) {
+            items: tipos.map((tipo) {
               return DropdownMenuItem(
-                value: lingua,
-                child: Text(lingua),
+                value: tipo,
+                child: Text(tipo),
               );
             }).toList(),
             style: TextStyle(
@@ -172,22 +153,22 @@ class _PessoaFormState extends State<PessoaForm> {
               fontWeight: FontWeight.bold,
             ),
             onChanged: (String value) {
-              faixas;
+              tipos;
             },
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.person,
+                Icons.category,
                 color: Colors.green,
               ),
-              hintText: 'Em que Faixa de Idade esta ?',
+              hintText: 'Escolha o Tipo que Procuras/Encotraste',
             ),
             validator: (value) {
-              return value.isEmpty ? 'é necessario a faixa.' : null;
+              return value.isEmpty ? 'é necessario este campo.' : null;
             },
             onSaved: (value) {
-              return _faixa = value;
+              return tipo(value);
             },
           ),
         ),
@@ -195,12 +176,12 @@ class _PessoaFormState extends State<PessoaForm> {
     );
   }
 
-  Widget _buildSaude() {
+  Widget _buildMarca() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Estado de Saúde :',
+          'Qual é a Marca do Objecto ?',
           style: TextStyle(
             color: Colors.green,
             fontSize: 12.0,
@@ -212,10 +193,10 @@ class _PessoaFormState extends State<PessoaForm> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: DropdownButtonFormField(
-            items: saudes.map((saude) {
+            items: marcas.map((raca) {
               return DropdownMenuItem(
-                value: saude,
-                child: Text(saude),
+                value: raca,
+                child: Text(raca),
               );
             }).toList(),
             style: TextStyle(
@@ -225,22 +206,22 @@ class _PessoaFormState extends State<PessoaForm> {
               fontWeight: FontWeight.bold,
             ),
             onChanged: (String value) {
-              saudes;
+              marcas;
             },
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.person,
+                Icons.category_sharp,
                 color: Colors.green,
               ),
-              hintText: 'Qual é o estado de Saúde da Pessoa ?',
+              hintText: 'Escolha a Marca...',
             ),
             validator: (value) {
-              return value.isEmpty ? 'é necessario o estado de saúde.' : null;
+              return value.isEmpty ? 'é necessario a marca.' : null;
             },
             onSaved: (value) {
-              return _saude = value;
+              return _marca = value;
             },
           ),
         ),
@@ -292,52 +273,7 @@ class _PessoaFormState extends State<PessoaForm> {
     );
   }
 
-  Widget _buildGenero() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        Radio(
-            value: "Masculino",
-            activeColor: Colors.orange,
-            groupValue: _genero,
-            onChanged: (value) {
-              setState(() {
-                this._genero = value;
-              });
-            }),
-        Text(
-          "Masculino",
-          style: TextStyle(
-              color: Colors.blueGrey[600],
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold),
-        ),
-        SizedBox(
-          width: 70.0,
-        ),
-        Row(
-          children: <Widget>[
-            Radio(
-                value: "Femenino",
-                activeColor: Colors.orange,
-                groupValue: _genero,
-                onChanged: (value) {
-                  setState(() {
-                    this._genero = value;
-                  });
-                }),
-            Text(
-              "Femenino",
-              style: TextStyle(
-                  color: Colors.blueGrey[600],
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold),
-            )
-          ],
-        ),
-      ],
-    );
-  }
+
 /* 
 * Obter Imagem apartir da galeria ou Camera
  */
@@ -348,14 +284,12 @@ class _PessoaFormState extends State<PessoaForm> {
     });
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            "Dados da Pessoa",
+            "Dados do Objecto",
           ),
         ),
         body: Container(
@@ -364,33 +298,32 @@ class _PessoaFormState extends State<PessoaForm> {
             child: Form(
               key: _formkey,
               child: Column(
-                //mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   _buildImage(),
+
+                  /* ======================================================== */
                   SizedBox(
                     height: 20.0,
                   ),
-                  _buildNome(),
+                  _buildTipo(),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  _buildMarca(),
+                  /* (_raca == "CÃO")? _buildRaca(): SizedBox(
+                    height: 10.0,
+                  ), */
                   Text(
-                    "Genero",
+                    "Descrição",
                     style: TextStyle(
                       color: Colors.green,
                       fontSize: 18.0,
                     ),
                   ),
-                  _buildGenero(),
-
-                  /* ======================================================== */
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  _buildFaixa(),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  _buildSaude(),
                   _buildDescricao(),
-                  _buildRegistarBtn()
+
+                  _buildRegistarBtn(),
                 ],
               ),
             ),

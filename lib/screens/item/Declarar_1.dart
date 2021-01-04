@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:perdidosachados/constants.dart';
+import 'package:perdidosachados/screens/item/AnimalForm.dart';
+import 'package:perdidosachados/screens/item/ObjectoForm.dart';
 import 'package:perdidosachados/screens/item/PessoaForm.dart';
 import 'package:perdidosachados/screens/other/acerca.dart';
 
@@ -8,10 +11,93 @@ class DeclararForm_1 extends StatefulWidget {
 }
 
 class _DeclararForm_1State extends State<DeclararForm_1> {
-  int valueGroupEstado;
-  int valueGroupTipo;
-  int valueGroupContacto;
-  int valueGroupRecompensa;
+  String texto = "";
+  int valueGroupEstado = 1;
+  int valueGroupTipo = 0;
+  int valueGroupContacto = 1;
+  int valueGroupRecompensa = 2;
+  List<String> tipo = ["PESSOA", "ANIMAL", "OBJECTO"];
+
+  void _valueGroupEstado(int value) {
+    setState(() {
+      valueGroupEstado = value;
+    });
+  }
+
+  void _valueGroupTipo(int value) {
+    setState(() {
+      valueGroupTipo = value;
+    });
+  }
+
+  void _valueGroupContacto(int value) {
+    setState(() {
+      valueGroupContacto = value;
+    });
+  }
+
+  void _valueGroupRecompensa(int value) {
+    setState(() {
+      valueGroupRecompensa = value;
+    });
+  }
+
+  Widget _buildTipo() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Estas a Procura/Encontraste ? :',
+          style: TextStyle(
+            color: Colors.green,
+            fontSize: 12.0,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: DropdownButtonFormField(
+            items: tipo.map((lingua) {
+              return DropdownMenuItem(
+                value: lingua,
+                child: Text(lingua),
+              );
+            }).toList(),
+            style: TextStyle(
+              color: Colors.green,
+              fontSize: 18.0,
+              fontFamily: 'OpenSans',
+              fontWeight: FontWeight.bold,
+            ),
+            onChanged: (String value) {
+              tipo;
+            },
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.person,
+                color: Colors.green,
+              ),
+              hintText: 'Escolha o que Procuras/Encotraste ',
+            ),/* 
+            validator: (value) {
+              return value.isEmpty ? 'é necessario o tipo.' : value;
+            }, */
+            onSaved: (value) {
+              if (value.toString() == "PESSOA")
+                return _valueGroupTipo(1);
+              else if (value.toString() == "ANIMAL")
+                return _valueGroupTipo(2);
+              else if (value.toString() == "OBJECTO") return _valueGroupTipo(3);
+            },
+          ),
+        ),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +112,9 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            SizedBox(
+              height: 30.0,
+            ),
             /* ---------------------------------------------------------------- */
             Text(
               "Estado do Item",
@@ -42,7 +131,7 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
               children: <Widget>[
                 Radio(
                     value: 1,
-                        activeColor: Colors.orange,
+                    activeColor: Colors.orange,
                     groupValue: valueGroupEstado,
                     onChanged: (value) {
                       setState(() {
@@ -87,91 +176,12 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
             ),
             /* ------------------------------------------------------------ */
             SizedBox(
-              height: 10.0,
+              height: 20.0,
             ),
-            Text(
-              "Tipo de Item",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Radio(
-                    value: 1,
-                        activeColor: Colors.orange,
-                    groupValue: valueGroupTipo,
-                    onChanged: (value) {
-                      setState(() {
-                        this.valueGroupTipo = value;
-                      });
-                    }),
-                Text(
-                  "Pessoa",
-                  style: TextStyle(
-                      color: Colors.blueGrey[600],
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold),
-                )
-              ],
-            ),
-            SizedBox(
-              width: 10.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Radio(
-                    value: 2,
-                        activeColor: Colors.orange,
-                    groupValue: valueGroupTipo,
-                    onChanged: (value) {
-                      setState(() {
-                        this.valueGroupTipo = value;
-                      });
-                    }),
-                Text(
-                  "Animal",
-                  style: TextStyle(
-                      color: Colors.blueGrey[600],
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold),
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Radio(
-                    value: 3,
-                        activeColor: Colors.orange,
-                    groupValue: valueGroupTipo,
-                    onChanged: (value) {
-                      setState(() {
-                        this.valueGroupTipo = value;
-                      });
-                    }),
-                Text(
-                  "Objecto",
-                  style: TextStyle(
-                      color: Colors.blueGrey[600],
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold),
-                )
-              ],
-            ),
-            /* ------------------------------------------------------------- */
-            Divider(
-              color: Colors.blueGrey[600],
-            ),
+            _buildTipo(),
             /* ---------------------------------------------------------------- */
             SizedBox(
-              height: 10.0,
+              height: 20.0,
             ),
             Text(
               "Tem Recompensa ?",
@@ -188,7 +198,7 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
               children: <Widget>[
                 Radio(
                     value: 1,
-                        activeColor: Colors.orange,
+                    activeColor: Colors.orange,
                     groupValue: valueGroupRecompensa,
                     onChanged: (value) {
                       setState(() {
@@ -250,7 +260,7 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
               children: <Widget>[
                 Radio(
                     value: 1,
-                        activeColor: Colors.orange,
+                    activeColor: Colors.orange,
                     groupValue: valueGroupContacto,
                     onChanged: (value) {
                       setState(() {
@@ -298,10 +308,17 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
                 elevation: 5.0,
                 onPressed: /* validateAndSave, */
                     () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => PessoaForm()));
+                  /* if (valueGroupTipo != 0) */
+                    print("valueGroupTipo");
+                    print(valueGroupEstado);
+                    print("valueGroupTipo");
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => ObjectoForm()));
+                  /* else
+                    texto = "Escolher o Tipo de Item (Pessoa/Animal/Objecto)"; */
                 },
-                padding: EdgeInsets.symmetric(horizontal: 120.0, vertical: 15.0),
+                padding:
+                    EdgeInsets.symmetric(horizontal: 120.0, vertical: 15.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -317,7 +334,15 @@ class _DeclararForm_1State extends State<DeclararForm_1> {
                   ),
                 ),
               ),
-            )
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Text(texto,
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 14.0,
+                ))
           ],
         ),
       ),

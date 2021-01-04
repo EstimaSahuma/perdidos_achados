@@ -4,24 +4,24 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:perdidosachados/constants.dart';
 
-class PessoaForm extends StatefulWidget {
+class AnimalForm extends StatefulWidget {
   @override
-  _PessoaFormState createState() => _PessoaFormState();
+  _AnimalFormState createState() => _AnimalFormState();
 }
 
-class _PessoaFormState extends State<PessoaForm> {
+class _AnimalFormState extends State<AnimalForm> {
   PickedFile _imageFile;
   final ImagePicker _picker = ImagePicker();
 
-  String _estado, _tipo, _descricao, _nome, _faixa, _genero, _saude = "";
-  List<String> saudes = ["NORMAL", "DEFICIENTE", "DOENTE MENTAL"];
-  List<String> faixas = ["CRIANÇA", "ADOLESCENTE", "JOVEM", "ADULTO", "IDOSO"];
+  String _raca, _tipo, _genero = "";
+  List<String> racas = ["RAFEIRO", "PITT-BULL", "PASTOR ALEMÃO"];
+  List<String> tipos = ["CÃO", "GATO", "MACACO", "PORCO INDÍO", "PORCO", "CABRITO", "COELHO", "OUTROS..."];
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
-  void faixa(String value) {
+  void tipo(String value) async {
     setState(() {
-      _faixa = value;
+      _tipo = value;
     });
   }
 
@@ -31,26 +31,28 @@ class _PessoaFormState extends State<PessoaForm> {
     });
   }
 
-  void saude(String value) {
+  void raca(String value) {
     setState(() {
-      _saude = value;
+      _raca = value;
     });
   }
 
-  Widget _buildNome() {
-    return TextFormField(
-      decoration: const InputDecoration(
-        icon: Icon(Icons.person),
-        hintText: 'Nome da Pessoa ?',
-        labelText: 'Nome *',
+  Widget _buildDescricao() {
+    return Card(
+      color: Colors.white,
+      child: TextFormField(
+        maxLines: 6,
+        decoration: InputDecoration.collapsed(
+          hintText: "escreva aqui a descrição do animal Ex: a core, o tamanho e/ou caracteristicas do animal...",
+        ),
+        onSaved: (String value) {
+          // This optional block of code can be used to run
+          // code when the user saves the form.
+        },
+        validator: (String value) {
+          return value.contains('@') ? 'Do not use the @ char.' : null;
+        },
       ),
-      onSaved: (String value) {
-        // This optional block of code can be used to run
-        // code when the user saves the form.
-      },
-      validator: (String value) {
-        return value.contains('@') ? 'Do not use the @ char.' : null;
-      },
     );
   }
 
@@ -101,7 +103,7 @@ class _PessoaFormState extends State<PessoaForm> {
         CircleAvatar(
           radius: 80.0,
           backgroundImage: _imageFile == null
-              ? AssetImage("assets/imagen/default_person.png")
+              ? AssetImage("assets/imagen/animais.png")
               : FileImage(File(_imageFile.path)),
         ),
         Positioned(
@@ -123,31 +125,12 @@ class _PessoaFormState extends State<PessoaForm> {
     );
   }
 
-  Widget _buildDescricao() {
-    return Card(
-      color: Colors.white,
-      child: TextFormField(
-        maxLines: 5,
-        decoration: InputDecoration.collapsed(
-          hintText: "escreva aqui a descrição do animal Ex: a core, o tamanho e/ou caracteristicas do animal...",
-        ),
-        onSaved: (String value) {
-          // This optional block of code can be used to run
-          // code when the user saves the form.
-        },
-        validator: (String value) {
-          return value.contains('@') ? 'Do not use the @ char.' : null;
-        },
-      ),
-    );
-  }
-
-  Widget _buildFaixa() {
+  Widget _buildTipo() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Faixetaria :',
+          'Tipo de Animal :',
           style: TextStyle(
             color: Colors.green,
             fontSize: 12.0,
@@ -159,10 +142,10 @@ class _PessoaFormState extends State<PessoaForm> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: DropdownButtonFormField(
-            items: faixas.map((lingua) {
+            items: tipos.map((tipo) {
               return DropdownMenuItem(
-                value: lingua,
-                child: Text(lingua),
+                value: tipo,
+                child: Text(tipo),
               );
             }).toList(),
             style: TextStyle(
@@ -172,22 +155,22 @@ class _PessoaFormState extends State<PessoaForm> {
               fontWeight: FontWeight.bold,
             ),
             onChanged: (String value) {
-              faixas;
+              tipos;
             },
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.person,
+                Icons.category,
                 color: Colors.green,
               ),
-              hintText: 'Em que Faixa de Idade esta ?',
+              hintText: 'Que Animal Procuras/Encotraste... ?',
             ),
             validator: (value) {
-              return value.isEmpty ? 'é necessario a faixa.' : null;
+              return value.isEmpty ? 'é necessario este campo.' : null;
             },
             onSaved: (value) {
-              return _faixa = value;
+              return tipo(value);
             },
           ),
         ),
@@ -195,12 +178,12 @@ class _PessoaFormState extends State<PessoaForm> {
     );
   }
 
-  Widget _buildSaude() {
+  Widget _buildRaca() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Estado de Saúde :',
+          'Qual é a Raça do teu Cão ?',
           style: TextStyle(
             color: Colors.green,
             fontSize: 12.0,
@@ -212,10 +195,10 @@ class _PessoaFormState extends State<PessoaForm> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: DropdownButtonFormField(
-            items: saudes.map((saude) {
+            items: racas.map((raca) {
               return DropdownMenuItem(
-                value: saude,
-                child: Text(saude),
+                value: raca,
+                child: Text(raca),
               );
             }).toList(),
             style: TextStyle(
@@ -225,22 +208,22 @@ class _PessoaFormState extends State<PessoaForm> {
               fontWeight: FontWeight.bold,
             ),
             onChanged: (String value) {
-              saudes;
+              racas;
             },
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.person,
+                Icons.category_sharp,
                 color: Colors.green,
               ),
-              hintText: 'Qual é o estado de Saúde da Pessoa ?',
+              hintText: 'Escolha a Raça do Cão',
             ),
             validator: (value) {
-              return value.isEmpty ? 'é necessario o estado de saúde.' : null;
+              return value.isEmpty ? 'é necessario a raça.' : null;
             },
             onSaved: (value) {
-              return _saude = value;
+              return _raca = value;
             },
           ),
         ),
@@ -294,10 +277,10 @@ class _PessoaFormState extends State<PessoaForm> {
 
   Widget _buildGenero() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Radio(
-            value: "Masculino",
+            value: "Macho",
             activeColor: Colors.orange,
             groupValue: _genero,
             onChanged: (value) {
@@ -306,7 +289,7 @@ class _PessoaFormState extends State<PessoaForm> {
               });
             }),
         Text(
-          "Masculino",
+          "Macho",
           style: TextStyle(
               color: Colors.blueGrey[600],
               fontSize: 20.0,
@@ -318,7 +301,7 @@ class _PessoaFormState extends State<PessoaForm> {
         Row(
           children: <Widget>[
             Radio(
-                value: "Femenino",
+                value: "Femea",
                 activeColor: Colors.orange,
                 groupValue: _genero,
                 onChanged: (value) {
@@ -327,7 +310,7 @@ class _PessoaFormState extends State<PessoaForm> {
                   });
                 }),
             Text(
-              "Femenino",
+              "Femea",
               style: TextStyle(
                   color: Colors.blueGrey[600],
                   fontSize: 20.0,
@@ -338,6 +321,7 @@ class _PessoaFormState extends State<PessoaForm> {
       ],
     );
   }
+
 /* 
 * Obter Imagem apartir da galeria ou Camera
  */
@@ -348,14 +332,12 @@ class _PessoaFormState extends State<PessoaForm> {
     });
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            "Dados da Pessoa",
+            "Dados do Animal",
           ),
         ),
         body: Container(
@@ -364,19 +346,11 @@ class _PessoaFormState extends State<PessoaForm> {
             child: Form(
               key: _formkey,
               child: Column(
-                //mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   _buildImage(),
                   SizedBox(
                     height: 20.0,
-                  ),
-                  _buildNome(),
-                  Text(
-                    "Genero",
-                    style: TextStyle(
-                      color: Colors.green,
-                      fontSize: 18.0,
-                    ),
                   ),
                   _buildGenero(),
 
@@ -384,13 +358,24 @@ class _PessoaFormState extends State<PessoaForm> {
                   SizedBox(
                     height: 10.0,
                   ),
-                  _buildFaixa(),
+                  _buildTipo(),
                   SizedBox(
                     height: 10.0,
                   ),
-                  _buildSaude(),
+                  _buildRaca(),
+                  /* (_raca == "CÃO")? _buildRaca(): SizedBox(
+                    height: 10.0,
+                  ), */
+                  Text(
+                    "Descrição",
+                    style: TextStyle(
+                      color: Colors.green,
+                      fontSize: 18.0,
+                    ),
+                  ),
                   _buildDescricao(),
-                  _buildRegistarBtn()
+
+                  _buildRegistarBtn(),
                 ],
               ),
             ),
