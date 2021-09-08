@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:perdidosachados/constants.dart';
 import 'package:perdidosachados/screens/Listar.dart';
+import 'package:perdidosachados/screens/item/Declarar_1.dart';
 import 'package:perdidosachados/screens/other/acerca.dart';
 import 'package:perdidosachados/screens/other/doacao.dart';
 import 'package:perdidosachados/screens/other/quem_somos.dart';
@@ -59,11 +60,11 @@ class Home extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () {/* Navigator.push(
+              onTap: () {Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) => Add(redirect: 1,)
-                        )); */},
+                        builder: (_) => DeclararForm_1()
+                        ));},
               child: ListTile(
                 title: Text(
                   'Declarar',
@@ -376,23 +377,23 @@ class CategoryCard extends StatelessWidget {
                         builder: (_) => Listar()
                         ));
               } else if (tela == 2) {
-               /*  Navigator.push(
+                Navigator.push(
                     context,
                     MaterialPageRoute(
-                         builder: (_) => Add(redirect: 1,)
-                        )); */
+                         builder: (_) => Listar()
+                        ));
               } else if (tela == 3) {
-               /*  Navigator.push(
+                Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) => RealTime()
-                        )); */
+                        builder: (_) => Listar()
+                        ));
               } else if (tela == 4) {
-                /* Navigator.push(
+                Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) => Cursos()
-                        )); */
+                        builder: (_) => Listar()
+                        ));
               }
             },
             child: Padding(
